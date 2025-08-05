@@ -7,7 +7,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-  - host: <hostname>
+  - host: gpc.mogul.mn
     http:
       paths:
       - backend:
@@ -61,7 +61,7 @@ spec:
         pathType: Prefix
   tls:
   - hosts:
-    - mnpayrolloperate.mn
+    - gpc.mogul.mn
     secretName: ingress-cert
 
 
