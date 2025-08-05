@@ -38,6 +38,9 @@ spec:
           value: "1"
         image: foxchin/hr-ess-benefit-service:20250721.1
         imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /app/Images
+          name: images-volume
         livenessProbe:
           failureThreshold: 3
           httpGet:
