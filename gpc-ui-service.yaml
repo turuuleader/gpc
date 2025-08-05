@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: gpc-ui
-        image: foxchin/gpc-ui:20250508.1
+        image: foxchin/gpc-ui:20250804.1
         ports:
         - containerPort: 3000
         env:
