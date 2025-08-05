@@ -23,19 +23,19 @@ spec:
         - name: NEXTAUTH_URL
           value: "https://gpc.digitalworks.mn"
         - name: NEXTAUTH_SECRET
-          value: "9DJuwvpbay2533ri5NF16VsT3J5thxJMmiRblp9hKow="
+          value: ""
         - name: BACKEND_BASE_URL
           value: "http://103.229.178.13:9001"
         - name: DEPRECIATED_BACKEND
           value: "http://103.229.178.13:9001"
         - name: COMPANYID
-          value: "ITZONETEST"
+          value: "REDACTED"
         - name: AZURE_AD_CLIENT_ID
-          value: "1fd2bed7-0e1b-4cbb-8650-df6b9bc695c6"
+          value: "REDACTED"
         - name: AZURE_AD_CLIENT_SECRET
-          value: "zeL8Q~yQK9QUSzA4GhW6DQbOEjNOiflES1id~djc"
+          value: "REDACTED"
         - name: AZURE_AD_TENANT_ID
-          value: "e9c63047-b959-49c9-9fcb-6de5e36870c8"
+          value: "REDACTED"
       imagePullSecrets:
       - name: regcred
       restartPolicy: Always
