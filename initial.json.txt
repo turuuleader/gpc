@@ -1,0 +1,39 @@
+{
+  "ConnectionStrings": {
+    "OracleConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
+    "DefaultConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
+    "ApprovalConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
+    "OracleConnectionPublic": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;"
+  },
+  "ServiceConfig": {
+    "khaanbank": "",
+    "Shunkhlai_url": "h",
+    "Shunkhlai_key": "",
+    "Metacog_api": "",
+    "Metacog_url": "",
+    "Metacog_key": "",
+    "GreenERP_Login":"http://10.7.22.200:9001/api/shared/user-management/auth/login",
+    "CheckFileVirus": "http://52.74.79.159:8080"
+  },
+  "Audience": {
+    "AuthenticationProviderKey": "DigitalWorksLLC",
+    "Secret": "REDACTED",
+    "Iss": "Digital Works",
+    "Aud": "Gateway",
+    "ExpiresMinute": 720,
+    "AzureAD_TenantID": "REDACTED",
+    "AzureAD_ClientID": "REDACTED"
+  },
+  "Integrations": {
+    "Email": {
+      "Default": {
+        "BaseUri": "smtp.gmail.com",
+        "UserName": "greenerp.itzone@gmail.com",
+        "Password": "REDACTED",
+        "Port": 587,
+        "IsSSL": true,
+        "PickUpFolder": "D:\\GreenERP\\APP\\Server\\mail"
+      }
+    }
+  }
+}
