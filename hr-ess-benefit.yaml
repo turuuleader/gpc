@@ -55,6 +55,10 @@ spec:
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: regcred
+      volumes:
+      - name: images-volume
+        persistentVolumeClaim:
+          claimName: hr-ess-benefit-pvc
 ---
 apiVersion: v1
 kind: Service
