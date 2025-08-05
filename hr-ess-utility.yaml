@@ -38,6 +38,9 @@ spec:
           value: "1"
         image: foxchin/hr-ess-hrutility-service:20250721.1
         imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /app/Files
+          name: files-volume
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -55,6 +58,10 @@ spec:
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: regcred
+      volumes:
+      - name: files-volume
+        persistentVolumeClaim:
+          claimName: hr-ess-utility-pvc
 ---
 apiVersion: v1
 kind: Service
