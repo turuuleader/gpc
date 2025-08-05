@@ -1,0 +1,79 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:  
+  labels:
+    io.kompose.service: apigateway
+  name: apigateway
+  namespace: default
+spec:
+  replicas: 1
+  revisionHistoryLimit: 3
+  selector:
+    matchLabels:
+      io.kompose.service: apigateway
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: apigateway
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:8080
+        - name: Logging__LogLevel__Default
+          value: Warning
+        - name: Logging__LogLevel__Microsoft
+          value: Warning
+        - name: Logging__LogLevel__System
+          value: Warning
+        image: foxchin/green-gate:20240402.6
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /swagger
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 2
+        name: apigateway
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: 250m
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: apigateway
+  name: apigateway
+  namespace: default
+spec:
+  internalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    io.kompose.service: apigateway
+  sessionAffinity: None
+  type: ClusterIP
+

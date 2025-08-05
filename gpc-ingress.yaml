@@ -1,0 +1,67 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: <hostname>
+    http:
+      paths:
+      - backend:
+          service:
+            name: gpc-ui
+            port:
+              number: 80
+        path: /
+        pathType: Prefix
+      - backend:
+          service:
+            name: gpc-ui
+            port:
+              number: 80
+        path: /api/service
+        pathType: Prefix
+      - backend:
+          service:
+            name: gpc-ui
+            port:
+              number: 80
+        path: /api/fileserve
+        pathType: Prefix
+      - backend:
+          service:
+            name: gpc-ui
+            port:
+              number: 80
+        path: /api/auth
+        pathType: Prefix
+      - backend:
+          service:
+            name: gpc-ui
+            port:
+              number: 80
+        path: /api/session
+        pathType: Prefix
+      - backend:
+          service:
+            name: apigateway
+            port:
+              number: 8080
+        path: /api/
+        pathType: Prefix
+      - backend:
+          service:
+            name: apigateway
+            port:
+              number: 8080
+        path: /swagger/
+        pathType: Prefix
+  tls:
+  - hosts:
+    - mnpayrolloperate.mn
+    secretName: ingress-cert
+
+

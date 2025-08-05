@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gpc-attendance-service
+  labels:
+    app: gpc-attendance-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gpc-attendance-service
+  template:
+    metadata:
+      labels:
+        app: gpc-attendance-service
+    spec:
+      containers:
+      - name: gpc-attendance-service
+        image: maraa/gpc-attendance-service:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://+:8080
+        - name: ServiceConfig__serviceDiscoveryAddress
+          value: http://consul:8500
+        - name: ServiceConfig__serviceAddress
+          value: http://gpc-attendance-service:8080
+        - name: ServiceConfig__serviceName
+          value: gpc-attendance-service
+        - name: ServiceConfig__serviceId
+          value: "1"
+      imagePullSecrets:
+      - name: regcred
+      restartPolicy: Always
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gpc-attendance-service
+spec:
+  selector:
+    app: gpc-attendance-service
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
