@@ -2,7 +2,6 @@ resources:
   - apigateway.yaml
   - auth.yaml
   - dw-approval.yaml
-  - gcp-attendance-service.yaml
   - gpc-ingress.yaml
   - gpc-ui-service.yaml
   - hr-benefit-pv.yaml
@@ -10,7 +9,7 @@ resources:
   - hr-ess-attendance.yaml
   - hr-ess-benefit.yaml
   - hr-ess-employee.yaml
-#  - hr-ess-employment.yaml
+  - hr-ess-employment-service.yaml
   - hr-ess-image.yaml
   - hr-ess-performanceappraisal.yaml
   - hr-ess-profile.yaml
