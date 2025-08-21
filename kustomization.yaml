@@ -9,7 +9,7 @@ resources:
   - hr-ess-attendance.yaml
   - hr-ess-benefit.yaml
   - hr-ess-employee.yaml
-  - hr-ess-employment-service.yaml
+  - hr-ess-employment.yaml
   - hr-ess-image.yaml
   - hr-ess-performanceappraisal.yaml
   - hr-ess-profile.yaml
