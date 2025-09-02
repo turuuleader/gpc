@@ -36,7 +36,7 @@ spec:
           value: hr-ess-performanceappraisal-service
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/hr-ess-performanceappraisal-service:20250721.5
+        image: foxchin/hr-ess-performanceappraisal-service:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
