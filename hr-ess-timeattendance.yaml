@@ -36,7 +36,7 @@ spec:
           value: hr-ess-timeattendance-service
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/hr-ess-timeattendance-service:20250721.1
+        image: foxchin/hr-ess-timeattendance-service:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
