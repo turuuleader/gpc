@@ -36,7 +36,7 @@ spec:
           value: hr-ess-employment-service
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/hr-ess-employment-service:20250721.5
+        image: foxchin/hr-ess-employment-service:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
