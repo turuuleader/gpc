@@ -16,3 +16,5 @@ resources:
   - hr-ess-timeattendance.yaml
   - hr-ess-utility.yaml
   - hr-utility-pvc.yaml
+  - hr-ess-recruitmentorder-service.yaml
+  - hr-ess-publicapi-service.yaml
