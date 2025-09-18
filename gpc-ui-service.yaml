@@ -42,7 +42,7 @@ spec:
           value: "1"
         - name: AZURE_AD_TENANT_ID
           value: "1"
-        image: foxchin/gpc-ui:latest
+        image: foxchin/gpc-ui:20250917.16
         imagePullPolicy: IfNotPresent
         name: gpc-ui
         ports:
