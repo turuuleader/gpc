@@ -16,6 +16,14 @@ spec:
     spec:
       containers:
       - env:
+        - name: REDIS_HOST
+          value: redis-configured-service
+        - name: REDIS_PORT
+          value: "6379"
+        - name: REDIS_PASSWORD
+          value: green
+        - name: REDIS_DB
+          value: "0"
         - name: NEXTAUTH_URL
           value: https://gpc.mogul.mn
         - name: NEXTAUTH_SECRET
