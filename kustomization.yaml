@@ -18,4 +18,3 @@ resources:
   - hr-utility-pvc.yaml
   - hr-ess-recruitmentorder-service.yaml
   - hr-ess-publicapi-service.yaml
-  - redis.yaml
