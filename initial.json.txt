@@ -17,7 +17,7 @@
   },
   "Audience": {
     "AuthenticationProviderKey": "DigitalWorksLLC",
-    "Secret": "REDACTED",
+    "Secret": "Y2F0Y2hlciUyMHdvbmclMjBsb3ZlJTIwLm5ldA==",
     "Iss": "Digital Works",
     "Aud": "Gateway",
     "ExpiresMinute": 720,
