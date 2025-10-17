@@ -39,7 +39,7 @@ spec:
         image: foxchin/hr-ess-fixedasset-service:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /app/Files
+        - mountPath: /app/Images
           name: files-volume
         livenessProbe:
           failureThreshold: 3
