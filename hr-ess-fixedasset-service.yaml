@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: hr-ess-fixedasset-service
+  name: hr-ess-fixedasset-service
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      io.kompose.service: hr-ess-fixedasset-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: hr-ess-fixedasset-service
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://*:8080
+        - name: ServiceConfig__serviceDiscoveryAddress
+          value: http://consul:8500
+        - name: ServiceConfig__serviceAddress
+          value: http://hr-ess-fixedasset-service:8080
+        - name: ServiceConfig__serviceName
+          value: hr-ess-fixedasset-service
+        - name: ServiceConfig__serviceId
+          value: "1"
+        image: foxchin/hr-ess-fixedasset-service:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: hr-ess-fixedasset-service
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: hr-ess-fixedasset-service
+  name: hr-ess-fixedasset-service
+  namespace: default
+spec:
+  internalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    io.kompose.service: hr-ess-fixedasset-service
+  sessionAffinity: None
+  type: ClusterIP
