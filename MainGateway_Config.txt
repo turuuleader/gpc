@@ -38,8 +38,8 @@
       "UpstreamPathTemplate": "/api/ess/recruitment_order/{everything}",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.31.26.1",
-          "Port": 9018
+          "Host": "hr-ess-recruitmentorder-service",
+          "Port": 8080
         }
       ],
       "DownstreamScheme": "http",
@@ -90,12 +90,12 @@
       ]
     },
     {
-      "DownstreamPathTemplate": "/api/ess/fixedasset/{everything}",
-      "UpstreamPathTemplate": "/api/ess/fixedasset/{everything}",
+      "DownstreamPathTemplate": "/api/ess/todomq/{everything}",
+      "UpstreamPathTemplate": "/api/ess/todomq/{everything}",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.31.26.1",
-          "Port": 9006
+          "Host": "hr-ess-todo-mq-service",
+          "Port": 8080
         }
       ],
       "DownstreamScheme": "http",
@@ -117,8 +117,41 @@
       "UpstreamPathTemplate": "/hr-ess-api-fixedasset/docs/swagger.json",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.31.26.1",
-          "Port": 9006
+          "Host": "hr-ess-todo-mq-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/fixedasset/{everything}",
+      "UpstreamPathTemplate": "/api/ess/fixedasset/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-fixedasset-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hr-ess-api-fixedasset/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-fixedasset-service",
+          "Port": 8080
         }
       ]
     },
@@ -419,8 +452,8 @@
       "UpstreamPathTemplate": "/api/ess/hrpublicapis/{everything}",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.31.26.1",
-          "Port": 9020
+          "Host": "hr-ess-publicapi-service",
+          "Port": 8080
         }
       ],
       "DownstreamScheme": "http",
@@ -442,8 +475,8 @@
       "UpstreamPathTemplate": "/hrpublicapis/docs/swagger.json",
       "DownstreamHostAndPorts": [
         {
-          "Host": "172.31.26.1",
-          "Port": 9020
+          "Host": "hr-ess-publicapi-service",
+          "Port": 8080
         }
       ]
     },
