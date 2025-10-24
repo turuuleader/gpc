@@ -1,0 +1,1 @@
+helm upgrade --install rmq bitnami/rabbitmq   --namespace rmq-prod   --set replicaCount=1   --set auth.username=app   --set auth.password='P@ssw0rd2025DW'   --set persistence.size=2Gi   --set metrics.enabled=true   --set resources.requests.cpu=500m   --set resources.requests.memory=1Gi   --set resources.limits.cpu=1   --set resources.limits.memory=2Gi
