@@ -114,7 +114,7 @@
     },
     {
       "DownstreamPathTemplate": "/swagger/v1/swagger.json",
-      "UpstreamPathTemplate": "/hr-ess-api-fixedasset/docs/swagger.json",
+      "UpstreamPathTemplate": "/hr-ess-todo-mq-service/docs/swagger.json",
       "DownstreamHostAndPorts": [
         {
           "Host": "hr-ess-todo-mq-service",
