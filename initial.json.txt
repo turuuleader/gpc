@@ -3,7 +3,8 @@
     "OracleConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
     "DefaultConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
     "ApprovalConnection": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
-    "OracleConnectionPublic": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;"
+    "OracleConnectionPublic": "DATA SOURCE = <connection_string>;password=password;User Id=schema;Incr Pool Size=5;Decr Pool Size=2;",
+    "RabbitMQ": "amqp://app:P%40ssw0rd2025DW@rmq-rabbitmq.rmq-prod.svc.cluster.local:5672/"
   },
   "ServiceConfig": {
     "khaanbank": "",
