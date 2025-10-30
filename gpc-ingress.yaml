@@ -3,11 +3,15 @@ kind: Ingress
 metadata:
   name: ingress-service
   annotations:
+    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/affinity: cookie
     nginx.ingress.kubernetes.io/affinity-mode: persistent
-    nginx.ingress.kubernetes.io/configuration-snippet: proxy_buffering off; proxy_cache_bypass
-      $http_upgrade; proxy_set_header Connection "upgrade"; proxy_set_header Upgrade
-      $http_upgrade; proxy_http_version 1.1;
+    nginx.ingress.kubernetes.io/configuration-snippet: |
+      proxy_buffering off;
+      proxy_cache_bypass $http_upgrade;
+      proxy_set_header Connection "upgrade";
+      proxy_set_header Upgrade $http_upgrade;
+      proxy_http_version 1.1;
     nginx.ingress.kubernetes.io/enable-websocket: "true"
     nginx.ingress.kubernetes.io/proxy-body-size: 16m
     nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
@@ -19,67 +23,78 @@ metadata:
     nginx.ingress.kubernetes.io/session-cookie-path: /
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
     nginx.ingress.kubernetes.io/upstream-hash-by: $request_uri
-    kubernetes.io/ingress.class: "nginx"
     nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
     nginx.ingress.kubernetes.io/proxy-buffer-size: "16k"
 spec:
   ingressClassName: nginx
   rules:
-  - host: hostname
-    http:
-      paths:
-      - backend:
-          service:
-            name: gpc-ui
-            port:
-              number: 80
-        path: /
-        pathType: Prefix
-      - backend:
-          service:
-            name: gpc-ui
-            port:
-              number: 80
-        path: /api/service
-        pathType: Prefix
-      - backend:
-          service:
-            name: gpc-ui
-            port:
-              number: 80
-        path: /api/fileserve
-        pathType: Prefix
-      - backend:
-          service:
-            name: gpc-ui
-            port:
-              number: 80
-        path: /api/auth
-        pathType: Prefix
-      - backend:
-          service:
-            name: gpc-ui
-            port:
-              number: 80
-        path: /api/session
-        pathType: Prefix
-      - backend:
-          service:
-            name: apigateway
-            port:
-              number: 8080
-        path: /api/
-        pathType: Prefix
-      - backend:
-          service:
-            name: apigateway
-            port:
-              number: 8080
-        path: /swagger/
-        pathType: Prefix
+    - host: gpc.digitalworks.mn
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/service
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/fileserve
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/session
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/
+            pathType: Prefix
+            backend:
+              service:
+                name: apigateway
+                port:
+                  number: 8080
+          - path: /swagger/
+            pathType: Prefix
+            backend:
+              service:
+                name: apigateway
+                port:
+                  number: 8080
+          - path: /api/next
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
+          - path: /api/chat
+            pathType: Prefix
+            backend:
+              service:
+                name: gpc-ui
+                port:
+                  number: 80
   tls:
-  - hosts:
-    - hostname
-    secretName: ingress-cert
-
-
+    - hosts:
+        - gpc.digitalworks.mn
+      secretName: ingress-cert
