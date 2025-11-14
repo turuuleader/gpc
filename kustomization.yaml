@@ -2,7 +2,6 @@ resources:
   - apigateway.yaml
   - auth.yaml
   - dw-approval.yaml
-  - gpc-ingress.yaml
   - gpc-ui-service.yaml
   - hr-benefit-pv.yaml
   - hr-benefit-pvc.yaml
@@ -18,3 +17,4 @@ resources:
   - hr-utility-pvc.yaml
   - hr-ess-recruitmentorder-service.yaml
   - hr-ess-publicapi-service.yaml
+  - hr-ess-todo-mq-service.yaml
