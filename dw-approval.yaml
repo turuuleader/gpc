@@ -36,7 +36,7 @@ spec:
           value: dw-approval-service
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/dw-approval-service:20250529.1
+        image: foxchin/dw-approval-service:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
