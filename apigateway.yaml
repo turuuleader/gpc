@@ -33,7 +33,7 @@ spec:
           value: Warning
         - name: Logging__LogLevel__System
           value: Warning
-        image: foxchin/green-gate:20240402.6
+        image: foxchin/green-gate:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
