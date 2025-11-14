@@ -18,4 +18,5 @@ resources:
   - hr-ess-recruitmentorder-service.yaml
   - hr-ess-publicapi-service.yaml
   - hr-ess-todo-mq-service.yaml
+  - hr-ess-fixedasset-pvc.yaml
   - hr-ess-fixedasset-service.yaml
