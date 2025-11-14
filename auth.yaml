@@ -36,7 +36,7 @@ spec:
           value: dw-auth-service
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/dw-auth-service:20250723.2
+        image: foxchin/dw-auth-service:latest
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
