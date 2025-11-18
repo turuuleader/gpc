@@ -20,3 +20,4 @@ resources:
   - hr-ess-todo-mq-service.yaml
   - hr-ess-fixedasset-pvc.yaml
   - hr-ess-fixedasset-service.yaml
+  - hr-ess-timesheetmq-service.yaml
