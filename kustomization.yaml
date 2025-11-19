@@ -22,3 +22,4 @@ resources:
   - hr-ess-fixedasset-service.yaml
   - hr-ess-timesheetmq-service.yaml
   - redis.yaml
+  - gpc-ingress.yaml
