@@ -21,3 +21,4 @@ resources:
   - hr-ess-fixedasset-pvc.yaml
   - hr-ess-fixedasset-service.yaml
   - hr-ess-timesheetmq-service.yaml
+  - redis.yaml
