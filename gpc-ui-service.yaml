@@ -30,8 +30,6 @@ spec:
           value: 9DJuwvpbay2533ri5NF16VsT3J5thxJMmiRblp9hKow=
         - name: BACKEND_BASE_URL
           value: http://apigateway:8080
-        - name: DEPRECIATED_BACKEND
-          value: http://apigateway:8080
         - name: LOGIN_TYPE
           value: basic
         - name: AZURE_AD_CLIENT_ID
