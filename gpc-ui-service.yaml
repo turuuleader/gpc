@@ -32,10 +32,8 @@ spec:
           value: http://apigateway:8080
         - name: DEPRECIATED_BACKEND
           value: http://apigateway:8080
-        - name: COMPANYID
-          value: DW
-        - name: NEXT_PUBLIC_LOGIN_TYPE
-          value: basic,microsoft
+        - name: LOGIN_TYPE
+          value: basic
         - name: AZURE_AD_CLIENT_ID
           value: "1"
         - name: AZURE_AD_CLIENT_SECRET
