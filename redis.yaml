@@ -85,23 +85,7 @@ spec:
   type: ClusterIP
 
 ---
-# Redis Service for Configured Version
-apiVersion: v1
-kind: Service
-metadata:
-  name: redis-configured-service
-  labels:
-    app: redis-configured
-spec:
-  selector:
-    app: redis-configured
-  ports:
-  - protocol: TCP
-    port: 6379
-    targetPort: 6379
-  type: ClusterIP
 
----
 # Redis Service for Configured Version
 apiVersion: v1
 kind: Service
