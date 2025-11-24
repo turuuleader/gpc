@@ -6,42 +6,30 @@ metadata:
   name: site-monitor
   namespace: default
 spec:
-  progressDeadlineSeconds: 600
   replicas: 1
-  revisionHistoryLimit: 5
   selector:
     matchLabels:
       io.kompose.service: site-monitor
-  strategy:
-    rollingUpdate:
-      maxSurge: 25%
-      maxUnavailable: 25%
-    type: RollingUpdate
   template:
     metadata:
       labels:
         io.kompose.service: site-monitor
     spec:
       containers:
-        image: foxchin/site-monitor:latest
-        imagePullPolicy: Always
-        livenessProbe:
-          failureThreshold: 3
-          httpGet:
-            path: /health
-            port: 8080
-            scheme: HTTP
-          initialDelaySeconds: 10
-          periodSeconds: 5
-          successThreshold: 1
-          timeoutSeconds: 1
-        name: site-monitor
-        ports:
-        - containerPort: 5000
-          protocol: TCP
-      dnsPolicy: ClusterFirst
+        - name: site-monitor
+          image: foxchin/site-monitor:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 5000
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 5
       imagePullSecrets:
-      - name: regcred
+        - name: regcred
 ---
 apiVersion: v1
 kind: Service
@@ -51,13 +39,10 @@ metadata:
   name: site-monitor
   namespace: default
 spec:
-  internalTrafficPolicy: Local
   ports:
-  - name: http
-    port: 8080
-    protocol: TCP
-    targetPort: 5000
+    - name: http
+      port: 8080
+      targetPort: 5000
   selector:
     io.kompose.service: site-monitor
-  sessionAffinity: None
   type: ClusterIP
