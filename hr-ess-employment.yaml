@@ -38,6 +38,9 @@ spec:
           value: "1"
         image: foxchin/hr-ess-employment-service:latest
         imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /app/Files
+          name: file-volume
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -55,6 +58,10 @@ spec:
       dnsPolicy: ClusterFirst
       imagePullSecrets:
       - name: regcred
+      volumes:
+      - name: file-volume
+        persistentVolumeClaim:
+          claimName: hr-ess-employment-pvc
 ---
 apiVersion: v1
 kind: Service
