@@ -40,7 +40,7 @@ spec:
         imagePullPolicy: Always
         volumeMounts:
         - mountPath: /app/Images
-          name: images-volume
+          name: files-volume
         livenessProbe:
           failureThreshold: 3
           httpGet:
@@ -59,9 +59,9 @@ spec:
       imagePullSecrets:
       - name: regcred
       volumes:
-      - name: images-volume
+      - name: files-volume
         persistentVolumeClaim:
-          claimName: hr-ess-benefit-pvc
+          claimName: hr-ess-utility-pvc
 ---
 apiVersion: v1
 kind: Service
