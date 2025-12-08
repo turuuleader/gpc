@@ -25,9 +25,9 @@ spec:
       initContainers:
       - name: init-images-dir
         image: busybox
-        command: ['sh', '-c', 'mkdir -p /app/Images && chmod 777 /app/Images']
+        command: ['sh', '-c', 'mkdir -p /app/Files && chmod 777 /app/Files']
         volumeMounts:
-        - mountPath: /app/Images
+        - mountPath: /app/Files
           name: files-volume
       containers:
       - env:
