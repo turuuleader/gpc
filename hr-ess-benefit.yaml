@@ -39,7 +39,9 @@ spec:
         image: foxchin/hr-ess-benefit-service:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /app/Files
+          name: files-volume
+        - mountPath: /app/Images
           name: files-volume
         livenessProbe:
           failureThreshold: 3
