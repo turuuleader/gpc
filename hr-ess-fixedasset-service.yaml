@@ -22,13 +22,6 @@ spec:
       labels:
         io.kompose.service: hr-ess-fixedasset-service
     spec:
-      initContainers:
-      - name: init-images-dir
-        image: busybox
-        command: ['sh', '-c', 'mkdir -p /app/Files && chmod 777 /app/Files']
-        volumeMounts:
-        - mountPath: /app/Files
-          name: files-volume
       containers:
       - env:
         - name: ASPNETCORE_ENVIRONMENT
@@ -46,7 +39,9 @@ spec:
         image: foxchin/hr-ess-fixedasset-service:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /app
+        - mountPath: /app/Files
+          name: files-volume
+        - mountPath: /app/Images
           name: files-volume
         livenessProbe:
           failureThreshold: 3
