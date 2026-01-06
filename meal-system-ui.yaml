@@ -1,0 +1,86 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: meal-system-ui
+  name: meal-system-ui
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      io.kompose.service: meal-system-ui
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: meal-system-ui
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://*:8080
+        - name: ServiceConfig__serviceDiscoveryAddress
+          value: http://consul:8500
+        - name: ServiceConfig__serviceAddress
+          value: http://meal-system-ui:8080
+        - name: NEXTAUTH_SECRET
+          value: "9DJuwvpbay2533ri5NF16VsT3J5thxJMmiRblp9hKow="
+        - name: BACKEND_LOGIN_URL
+          value: http://apigateway:8080
+        - name: COMPANYID
+          value: "APUJ"
+        - name: BACKEND_BASE_URL
+          value: http://apigateway:8080
+        - name: NEXTAUTH_URL
+          value: https://msystem.apu.mn
+        - name: ServiceConfig__serviceName
+          value: meal-system-ui
+        - name: ServiceConfig__serviceId
+          value: "1"
+        image: foxchin/meal-system-ui:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: meal-system-ui
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: meal-system-ui
+  name: meal-system-ui
+  namespace: default
+spec:
+  internalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    io.kompose.service: meal-system-ui
+  sessionAffinity: None
+  type: ClusterIP
