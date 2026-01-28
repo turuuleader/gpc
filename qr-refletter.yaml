@@ -1,0 +1,76 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: qr-refletter
+  name: qr-refletter
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      io.kompose.service: qr-refletter
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qr-refletter
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://*:8080
+        - name: ServiceConfig__serviceDiscoveryAddress
+          value: http://consul:8500
+        - name: ServiceConfig__serviceAddress
+          value: http://qr-refletter:8080
+        - name: ServiceConfig__serviceName
+          value: qr-refletter
+        - name: ServiceConfig__serviceId
+          value: "1"
+        image: foxchin/qr-refletter:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: qr-refletter
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: qr-refletter
+  name: qr-refletter
+  namespace: default
+spec:
+  internalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    io.kompose.service: qr-refletter
+  sessionAffinity: None
+  type: ClusterIP
