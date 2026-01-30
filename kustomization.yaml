@@ -3,7 +3,6 @@ resources:
   - auth.yaml
   - dw-approval.yaml
   - gpc-ui-service.yaml
-  - hr-benefit-pv.yaml
   - hr-ess-attendance.yaml
   - hr-ess-benefit.yaml
   - hr-ess-employee.yaml
@@ -13,7 +12,6 @@ resources:
   - hr-ess-profile.yaml
   - hr-ess-timeattendance.yaml
   - hr-ess-utility.yaml
-  - hr-utility-pvc.yaml
   - hr-ess-recruitmentorder-service.yaml
   - hr-ess-publicapi-service.yaml
   - hr-ess-todo-mq-service.yaml
