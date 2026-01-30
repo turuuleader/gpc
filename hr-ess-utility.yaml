@@ -39,7 +39,7 @@ spec:
         image: foxchin/hr-ess-hrutility-service:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /app/Files
+        - mountPath: /app/gpcfiles
           name: files-volume
         livenessProbe:
           failureThreshold: 3
