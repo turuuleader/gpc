@@ -36,6 +36,8 @@ spec:
           value: dw-auth-service
         - name: ServiceConfig__serviceId
           value: "1"
+        - name: Logging__LogLevel__Default
+          value: "Warning"
         image: foxchin/dw-auth-service:latest
         imagePullPolicy: Always
         livenessProbe:
