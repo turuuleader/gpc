@@ -25,7 +25,7 @@ spec:
         - name: REDIS_DB
           value: "0"
         - name: NEXTAUTH_URL
-          value: https://gpc.mogul.mn
+          value: ""
         - name: NEXTAUTH_SECRET
           value: 9DJuwvpbay2533ri5NF16VsT3J5thxJMmiRblp9hKow=
         - name: BACKEND_BASE_URL
