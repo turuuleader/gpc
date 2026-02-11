@@ -38,7 +38,7 @@ spec:
           value: "1"
         - name: API_URL
           value: https://ess.barloworld.mn
-        image: foxchin/qr-refletter-barlo:latest
+        image: foxchin/qr-refletter-barlo:20260211.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
