@@ -1,0 +1,78 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    io.kompose.service: qr-refletter-barlo
+  name: qr-refletter-barlo
+  namespace: default
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 1
+  revisionHistoryLimit: 5
+  selector:
+    matchLabels:
+      io.kompose.service: qr-refletter-barlo
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        io.kompose.service: qr-refletter-barlo
+    spec:
+      containers:
+      - env:
+        - name: ASPNETCORE_ENVIRONMENT
+          value: Production
+        - name: ASPNETCORE_URLS
+          value: http://*:8080
+        - name: ServiceConfig__serviceDiscoveryAddress
+          value: http://consul:8500
+        - name: ServiceConfig__serviceAddress
+          value: http://qr-refletter-barlo:8080
+        - name: ServiceConfig__serviceName
+          value: qr-refletter-barlo
+        - name: ServiceConfig__serviceId
+          value: "1"
+        - name: API_URL
+          value: https://ess.barloworld.mn
+        image: foxchin/qr-refletter-barlo:latest
+        imagePullPolicy: Always
+        livenessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 8080
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 5
+          successThreshold: 1
+          timeoutSeconds: 1
+        name: qr-refletter-barlo
+        ports:
+        - containerPort: 3000
+          protocol: TCP
+      dnsPolicy: ClusterFirst
+      imagePullSecrets:
+      - name: regcred
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    io.kompose.service: qr-refletter-barlo
+  name: qr-refletter-barlo
+  namespace: default
+spec:
+  internalTrafficPolicy: Local
+  ports:
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    io.kompose.service: qr-refletter-barlo
+  sessionAffinity: None
+  type: ClusterIP
