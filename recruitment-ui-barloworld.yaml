@@ -36,7 +36,7 @@ spec:
           value: recruitment-ui-barloworld
         - name: ServiceConfig__serviceId
           value: "1"
-        image: foxchin/recruitment-ui-barloworld:latest
+        image: foxchin/recruitment-ui-barloworld:20260211.2
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
