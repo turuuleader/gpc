@@ -1,0 +1,114 @@
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: ess.barloworld.mn
+      http:
+        paths:
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/service
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/fileserve
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/auth
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/session
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /api/
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /swagger/
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/next
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/chat
+          pathType: Prefix
+    - host: careers.barloworld.mn
+      http:
+        paths:
+        - backend:
+            service:
+              name: recruitment-ui-barloworld
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /api/
+          pathType: Prefix
+        - backend:
+            service:
+              name: hr-applicant-service
+              port:
+                number: 8080
+          path: /api/system
+          pathType: Prefix
+        - backend:
+            service:
+              name: hr-applicant-service
+              port:
+                number: 8080
+          path: /Images
+          pathType: Prefix
+    tls:
+    - hosts:
+      - ess.barloworld.mn
+      secretName: ess
+    - hosts:
+      - careers.barloworld.mn
+      secretName: careers
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 172.31.30.70
+kind: List
+metadata:
+  resourceVersion: ""
