@@ -1,0 +1,593 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/shared/user-management/{everything}",
+      "UpstreamPathTemplate": "/api/shared/user-management/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dw-auth-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-auth-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dw-auth-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/recruitment_order/{everything}",
+      "UpstreamPathTemplate": "/api/ess/recruitment_order/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-recruitmentorder-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/employee/{everything}",
+      "UpstreamPathTemplate": "/api/ess/employee/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-employee-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hr-ess-employee/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-employee-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/applicant/{everything}",
+      "UpstreamPathTemplate": "/api/applicant/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-applicant-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hr-applicant/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-applicant-service",
+          "Port": 8080
+        }
+      ]
+    },
+     {
+      "DownstreamPathTemplate": "/api/system/{everything}",
+      "UpstreamPathTemplate": "/api/system/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-applicant-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hr-applicant/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-applicant-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/fixedasset/{everything}",
+      "UpstreamPathTemplate": "/api/ess/fixedasset/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.31.26.1",
+          "Port": 9006
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hr-ess-api-fixedasset/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.31.26.1",
+          "Port": 9006
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/shared/approval/{everything}",
+      "UpstreamPathTemplate": "/api/shared/approval/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dw-approval-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-approval-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "dw-approval-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/benefit/{everything}",
+      "UpstreamPathTemplate": "/api/ess/benefit/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-benefit-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-benefit-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-benefit-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/utility/{everything}",
+      "UpstreamPathTemplate": "/api/ess/utility/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-hrutility-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-utility-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-hrutility-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/profile/{everything}",
+      "UpstreamPathTemplate": "/api/ess/profile/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-profile-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-profile-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-profile-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/timeAttendance/{everything}",
+      "UpstreamPathTemplate": "/api/ess/timeAttendance/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-timeattendance-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-timeAttendance-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-timeattendance-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/image/{everything}",
+      "UpstreamPathTemplate": "/api/ess/image/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-image-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 20
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-image-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-image-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/dico/{everything}",
+      "UpstreamPathTemplate": "/api/ess/dico/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.31.26.1",
+          "Port": 9009
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/dw-dico-service-1/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "172.31.26.1",
+          "Port": 9009
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/performanceappraisal/{everything}",
+      "UpstreamPathTemplate": "/api/ess/performanceappraisal/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-performanceappraisal-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/PerformanceAppraisalService/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-performanceappraisal-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/employment/{everything}",
+      "UpstreamPathTemplate": "/api/ess/employment/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-employment-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "DigitalWorksLLC",
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/employment/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-employment-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/ess/hrpublicapis/{everything}",
+      "UpstreamPathTemplate": "/api/ess/hrpublicapis/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-publicapi-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/hrpublicapis/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-publicapi-service",
+          "Port": 8080
+        }
+      ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/gpc/{everything}",
+      "UpstreamPathTemplate": "/api/gpc/{everything}",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-attendance-service",
+          "Port": 8080
+        }
+      ],
+      "DownstreamScheme": "http",
+      "LoadBalancerOptions": {
+        "Type": "LeastConnection"
+      },
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": null,
+        "AllowedScopes": []
+      },
+      "RateLimitOptions": {
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "Limit": 10
+      }
+    },
+    {
+      "DownstreamPathTemplate": "/swagger/v1/swagger.json",
+      "UpstreamPathTemplate": "/attendance/docs/swagger.json",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "hr-ess-attendance-service",
+          "Port": 8080
+        }
+      ]
+    }
+  ],
+  "DynamicRoutes": [],
+  "Aggregates": [],
+  "GlobalConfiguration": {
+    "RequestIdKey": "DigitalWorksRequestId",
+    "ServiceDiscoveryProvider": {
+      "Scheme": null,
+      "Host": "consul",
+      "Port": 8500,
+      "Type": "PollConsul",
+      "Token": "D1G1TALW0RK$",
+      "ConfigurationKey": "MainGateway_Config",
+      "PollingInterval": 0,
+      "Namespace": null
+    },
+    "RateLimitOptions": {
+      "ClientIdHeader": "DigitalWorksClientId",
+      "QuotaExceededMessage": "Too many requests",
+      "RateLimitCounterPrefix": "ocelot",
+      "HttpStatusCode": 429,
+      "EnableRateLimiting": true
+    },
+    "QoSOptions": {
+      "ExceptionsAllowedBeforeBreaking": 0,
+      "DurationOfBreak": 0,
+      "TimeoutValue": 0
+    },
+    "BaseUrl": null,
+    "LoadBalancerOptions": {
+      "Type": "LeastConnection",
+      "Key": null,
+      "Expiry": 0
+    },
+    "DownstreamScheme": null,
+    "HttpHandlerOptions": {
+      "AllowAutoRedirect": false,
+      "UseCookieContainer": false,
+      "UseTracing": true,
+      "UseProxy": true,
+      "MaxConnectionsPerServer": 2147483647
+    },
+    "DownstreamHttpVersion": null
+  }
+}
+
