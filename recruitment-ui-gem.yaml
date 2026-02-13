@@ -50,7 +50,7 @@ spec:
           timeoutSeconds: 1
         name: recruitment-ui-gem
         ports:
-        - containerPort: 8080
+        - containerPort: 80
           protocol: TCP
       dnsPolicy: ClusterFirst
       imagePullSecrets:
@@ -67,9 +67,9 @@ spec:
   internalTrafficPolicy: Local
   ports:
   - name: http
-    port: 8080
+    port: 80
     protocol: TCP
-    targetPort: 8080
+    targetPort: 80
   selector:
     io.kompose.service: recruitment-ui-gem
   sessionAffinity: None
