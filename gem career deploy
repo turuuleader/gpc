@@ -1,0 +1,282 @@
+apiVersion: v1
+items:
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "8"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"io.kompose.service":"qr-refletter"},"name":"qr-refletter","namespace":"default"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":5,"selector":{"matchLabels":{"io.kompose.service":"qr-refletter"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"io.kompose.service":"qr-refletter"}},"spec":{"containers":[{"env":[{"name":"ASPNETCORE_ENVIRONMENT","value":"Production"},{"name":"ASPNETCORE_URLS","value":"http://*:8080"},{"name":"ServiceConfig__serviceDiscoveryAddress","value":"http://consul:8500"},{"name":"ServiceConfig__serviceAddress","value":"http://qr-refletter:8080"},{"name":"ServiceConfig__serviceName","value":"qr-refletter"},{"name":"ServiceConfig__serviceId","value":"1"}],"image":"foxchin/qr-refletter:latest","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":8080,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":1},"name":"qr-refletter","ports":[{"containerPort":8080,"protocol":"TCP"}]}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"regcred"}]}}}}
+    creationTimestamp: "2026-01-28T06:22:26Z"
+    generation: 8
+    labels:
+      io.kompose.service: qr-refletter
+    name: qr-refletter
+    namespace: default
+    resourceVersion: "15506732"
+    uid: 39b8a52d-c5cd-469c-80a4-49fa7645dae1
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 5
+    selector:
+      matchLabels:
+        io.kompose.service: qr-refletter
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2026-01-28T16:21:15+08:00"
+        creationTimestamp: null
+        labels:
+          io.kompose.service: qr-refletter
+      spec:
+        containers:
+        - env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          - name: ASPNETCORE_URLS
+            value: http://*:8080
+          - name: ServiceConfig__serviceDiscoveryAddress
+            value: http://consul:8500
+          - name: ServiceConfig__serviceAddress
+            value: http://qr-refletter:8080
+          - name: ServiceConfig__serviceName
+            value: qr-refletter
+          - name: ServiceConfig__serviceId
+            value: "1"
+          - name: API_URL
+            value: https://gpc.gem.mn
+          image: foxchin/qr-refletter:20260130.10
+          imagePullPolicy: Always
+          name: qr-refletter
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: regcred
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-01-29T04:37:21Z"
+      lastUpdateTime: "2026-01-29T04:37:21Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-01-28T06:22:26Z"
+      lastUpdateTime: "2026-01-30T04:22:45Z"
+      message: ReplicaSet "qr-refletter-6d9d7cffff" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 8
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "6"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"io.kompose.service":"recruitment-ui-gem"},"name":"recruitment-ui-gem","namespace":"default"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":5,"selector":{"matchLabels":{"io.kompose.service":"recruitment-ui-gem"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"io.kompose.service":"recruitment-ui-gem"}},"spec":{"containers":[{"env":[{"name":"ASPNETCORE_ENVIRONMENT","value":"Production"},{"name":"ASPNETCORE_URLS","value":"http://*:8080"},{"name":"ServiceConfig__serviceDiscoveryAddress","value":"http://consul:8500"},{"name":"ServiceConfig__serviceAddress","value":"http://recruitment-ui-gem:8080"},{"name":"ServiceConfig__serviceName","value":"recruitment-ui-gem"},{"name":"ServiceConfig__serviceId","value":"1"}],"image":"foxchin/recruitment-ui-gem:latest","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":8080,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":1},"name":"recruitment-ui-gem","ports":[{"containerPort":8080,"protocol":"TCP"}]}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"regcred"}]}}}}
+    creationTimestamp: "2026-01-28T06:22:16Z"
+    generation: 6
+    labels:
+      io.kompose.service: recruitment-ui-gem
+    name: recruitment-ui-gem
+    namespace: default
+    resourceVersion: "18607172"
+    uid: a2056a56-4689-4def-88bd-8e416164b805
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 5
+    selector:
+      matchLabels:
+        io.kompose.service: recruitment-ui-gem
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2026-01-28T14:30:21+08:00"
+        creationTimestamp: null
+        labels:
+          io.kompose.service: recruitment-ui-gem
+      spec:
+        containers:
+        - env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          - name: ASPNETCORE_URLS
+            value: http://*:8080
+          - name: ServiceConfig__serviceDiscoveryAddress
+            value: http://consul:8500
+          - name: ServiceConfig__serviceAddress
+            value: http://recruitment-ui-gem:8080
+          - name: ServiceConfig__serviceName
+            value: recruitment-ui-gem
+          - name: ServiceConfig__serviceId
+            value: "1"
+          - name: BACKEND_BASE_URL
+            value: https://careers.gem.mn
+          - name: NEXTAUTH_URL
+            value: https://careers.gem.mn
+          - name: NEXTAUTH_SECRET
+            value: 9DJuwvpbay2533ro5MF16VsT3K5tjxKdRb;p0hLpw=
+          image: foxchin/recruitment-ui-gem:20260213.3
+          imagePullPolicy: Always
+          name: recruitment-ui-gem
+          ports:
+          - containerPort: 3000
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: regcred
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-01-28T06:41:34Z"
+      lastUpdateTime: "2026-01-28T06:41:34Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    - lastTransitionTime: "2026-01-28T06:22:16Z"
+      lastUpdateTime: "2026-02-24T03:32:47Z"
+      message: ReplicaSet "recruitment-ui-gem-84c676d876" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    observedGeneration: 6
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+- apiVersion: apps/v1
+  kind: Deployment
+  metadata:
+    annotations:
+      deployment.kubernetes.io/revision: "11"
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"apps/v1","kind":"Deployment","metadata":{"annotations":{},"labels":{"io.kompose.service":"hr-applicant-service"},"name":"hr-applicant-service","namespace":"default"},"spec":{"progressDeadlineSeconds":600,"replicas":1,"revisionHistoryLimit":5,"selector":{"matchLabels":{"io.kompose.service":"hr-applicant-service"}},"strategy":{"rollingUpdate":{"maxSurge":"25%","maxUnavailable":"25%"},"type":"RollingUpdate"},"template":{"metadata":{"labels":{"io.kompose.service":"hr-applicant-service"}},"spec":{"containers":[{"env":[{"name":"ASPNETCORE_ENVIRONMENT","value":"Production"},{"name":"ASPNETCORE_URLS","value":"http://*:8080"},{"name":"ServiceConfig__serviceDiscoveryAddress","value":"http://consul:8500"},{"name":"ServiceConfig__serviceAddress","value":"http://hr-applicant-service:8080"},{"name":"ServiceConfig__serviceName","value":"hr-applicant-service"},{"name":"ServiceConfig__serviceId","value":"1"}],"image":"foxchin/hr-applicant-service:latest","imagePullPolicy":"Always","livenessProbe":{"failureThreshold":3,"httpGet":{"path":"/health","port":8080,"scheme":"HTTP"},"initialDelaySeconds":10,"periodSeconds":5,"successThreshold":1,"timeoutSeconds":1},"name":"hr-applicant-service","ports":[{"containerPort":8080,"protocol":"TCP"}],"volumeMounts":[{"mountPath":"/app/gpcfiles","name":"files-volume"}]}],"dnsPolicy":"ClusterFirst","imagePullSecrets":[{"name":"regcred"}],"volumes":[{"name":"files-volume","persistentVolumeClaim":{"claimName":"hr-utility-pvc"}}]}}}}
+    creationTimestamp: "2026-01-28T06:22:40Z"
+    generation: 11
+    labels:
+      io.kompose.service: hr-applicant-service
+    name: hr-applicant-service
+    namespace: default
+    resourceVersion: "19475247"
+    uid: dd85873b-457e-45c9-97f0-c3091c348cea
+  spec:
+    progressDeadlineSeconds: 600
+    replicas: 1
+    revisionHistoryLimit: 5
+    selector:
+      matchLabels:
+        io.kompose.service: hr-applicant-service
+    strategy:
+      rollingUpdate:
+        maxSurge: 25%
+        maxUnavailable: 25%
+      type: RollingUpdate
+    template:
+      metadata:
+        annotations:
+          kubectl.kubernetes.io/restartedAt: "2026-01-28T16:21:03+08:00"
+        creationTimestamp: null
+        labels:
+          io.kompose.service: hr-applicant-service
+      spec:
+        containers:
+        - env:
+          - name: ASPNETCORE_ENVIRONMENT
+            value: Production
+          - name: ASPNETCORE_URLS
+            value: http://*:8080
+          - name: ServiceConfig__serviceDiscoveryAddress
+            value: http://consul:8500
+          - name: ServiceConfig__serviceAddress
+            value: http://hr-applicant-service:8080
+          - name: ServiceConfig__serviceName
+            value: hr-applicant-service
+          - name: ServiceConfig__serviceId
+            value: "1"
+          image: foxchin/hr-applicant-service:latest
+          imagePullPolicy: Always
+          livenessProbe:
+            failureThreshold: 3
+            httpGet:
+              path: /health
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 10
+            periodSeconds: 5
+            successThreshold: 1
+            timeoutSeconds: 1
+          name: hr-applicant-service
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          resources: {}
+          terminationMessagePath: /dev/termination-log
+          terminationMessagePolicy: File
+          volumeMounts:
+          - mountPath: /app/gpcfiles
+            name: files-volume
+        dnsPolicy: ClusterFirst
+        imagePullSecrets:
+        - name: regcred
+        restartPolicy: Always
+        schedulerName: default-scheduler
+        securityContext: {}
+        terminationGracePeriodSeconds: 30
+        volumes:
+        - name: files-volume
+          persistentVolumeClaim:
+            claimName: hr-ess-utility-pvc
+  status:
+    availableReplicas: 1
+    conditions:
+    - lastTransitionTime: "2026-01-28T06:22:40Z"
+      lastUpdateTime: "2026-03-03T03:06:36Z"
+      message: ReplicaSet "hr-applicant-service-586999b48d" has successfully progressed.
+      reason: NewReplicaSetAvailable
+      status: "True"
+      type: Progressing
+    - lastTransitionTime: "2026-03-03T03:06:39Z"
+      lastUpdateTime: "2026-03-03T03:06:39Z"
+      message: Deployment has minimum availability.
+      reason: MinimumReplicasAvailable
+      status: "True"
+      type: Available
+    observedGeneration: 11
+    readyReplicas: 1
+    replicas: 1
+    updatedReplicas: 1
+kind: List
+metadata:
+  resourceVersion: ""
