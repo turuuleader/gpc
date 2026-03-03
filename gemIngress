@@ -1,0 +1,156 @@
+apiVersion: v1
+items:
+- apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"networking.k8s.io/v1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx","nginx.ingress.kubernetes.io/affinity":"cookie","nginx.ingress.kubernetes.io/affinity-mode":"persistent","nginx.ingress.kubernetes.io/enable-websocket":"true","nginx.ingress.kubernetes.io/proxy-body-size":"16m","nginx.ingress.kubernetes.io/proxy-buffer-size":"16k","nginx.ingress.kubernetes.io/proxy-connect-timeout":"60","nginx.ingress.kubernetes.io/proxy-read-timeout":"3600","nginx.ingress.kubernetes.io/proxy-send-timeout":"3600","nginx.ingress.kubernetes.io/session-cookie-expires":"3600","nginx.ingress.kubernetes.io/session-cookie-max-age":"3600","nginx.ingress.kubernetes.io/session-cookie-name":"signalr-server","nginx.ingress.kubernetes.io/session-cookie-path":"/","nginx.ingress.kubernetes.io/ssl-redirect":"false","nginx.ingress.kubernetes.io/upstream-hash-by":"$request_uri","nginx.ingress.kubernetes.io/use-forwarded-headers":"true"},"name":"ingress-service","namespace":"default"},"spec":{"ingressClassName":"nginx","rules":[{"host":"gpc.digitalworks.mn","http":{"paths":[{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/service","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/fileserve","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/auth","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/session","pathType":"Prefix"},{"backend":{"service":{"name":"apigateway","port":{"number":8080}}},"path":"/api/","pathType":"Prefix"},{"backend":{"service":{"name":"apigateway","port":{"number":8080}}},"path":"/swagger/","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/next","pathType":"Prefix"},{"backend":{"service":{"name":"gpc-ui","port":{"number":80}}},"path":"/api/chat","pathType":"Prefix"}]}}],"tls":[{"hosts":["gpc.digitalworks.mn"],"secretName":"ingress-cert"}]}}
+      kubernetes.io/ingress.class: nginx
+      nginx.ingress.kubernetes.io/affinity: cookie
+      nginx.ingress.kubernetes.io/affinity-mode: persistent
+      nginx.ingress.kubernetes.io/enable-websocket: "true"
+      nginx.ingress.kubernetes.io/proxy-body-size: 16m
+      nginx.ingress.kubernetes.io/proxy-buffer-size: 16k
+      nginx.ingress.kubernetes.io/proxy-connect-timeout: "60"
+      nginx.ingress.kubernetes.io/proxy-read-timeout: "3600"
+      nginx.ingress.kubernetes.io/proxy-send-timeout: "3600"
+      nginx.ingress.kubernetes.io/session-cookie-expires: "3600"
+      nginx.ingress.kubernetes.io/session-cookie-max-age: "3600"
+      nginx.ingress.kubernetes.io/session-cookie-name: signalr-server
+      nginx.ingress.kubernetes.io/session-cookie-path: /
+      nginx.ingress.kubernetes.io/ssl-redirect: "false"
+      nginx.ingress.kubernetes.io/upstream-hash-by: $request_uri
+      nginx.ingress.kubernetes.io/use-forwarded-headers: "true"
+    creationTimestamp: "2025-10-02T03:37:51Z"
+    generation: 16
+    name: ingress-service
+    namespace: default
+    resourceVersion: "19469295"
+    uid: efb27a1d-1449-4f4c-98f8-55f23f24ea1a
+  spec:
+    ingressClassName: nginx
+    rules:
+    - host: gpc.gem.mn
+      http:
+        paths:
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/service
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/fileserve
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/auth
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/session
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /api/
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /swagger/
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/next
+          pathType: Prefix
+        - backend:
+            service:
+              name: gpc-ui
+              port:
+                number: 80
+          path: /api/chat
+          pathType: Prefix
+    - host: careers.gem.mn
+      http:
+        paths:
+        - backend:
+            service:
+              name: recruitment-ui-gem
+              port:
+                number: 80
+          path: /
+          pathType: Prefix
+        - backend:
+            service:
+              name: qr-refletter
+              port:
+                number: 80
+          path: /checkrefletter
+          pathType: Prefix
+        - backend:
+            service:
+              name: recruitment-ui-gem
+              port:
+                number: 80
+          path: /api/v1
+          pathType: Prefix
+        - backend:
+            service:
+              name: recruitment-ui-gem
+              port:
+                number: 80
+          path: /api/file
+          pathType: Prefix
+        - backend:
+            service:
+              name: recruitment-ui-gem
+              port:
+                number: 80
+          path: /api/auth
+          pathType: Prefix
+        - backend:
+            service:
+              name: apigateway
+              port:
+                number: 8080
+          path: /api/
+          pathType: Prefix
+    tls:
+    - hosts:
+      - gpc.gem.mn
+      - careers.gem.mn
+      secretName: gem-tls
+  status:
+    loadBalancer:
+      ingress:
+      - ip: 192.168.0.9
+kind: List
+metadata:
+  resourceVersion: ""
