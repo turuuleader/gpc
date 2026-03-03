@@ -37,7 +37,7 @@ spec:
         - name: ServiceConfig__serviceId
           value: "1"
         - name: API_URL
-          value: https://ess.barloworld.mn
+          value: https://gpc.tme.mn
         image: foxchin/qr-refletter-buuruljuut:20260303.1
         imagePullPolicy: Always
         livenessProbe:
