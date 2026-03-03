@@ -1,0 +1,103 @@
+apiVersion: v1
+items:
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"io.kompose.service":"qr-refletter"},"name":"qr-refletter","namespace":"default"},"spec":{"internalTrafficPolicy":"Local","ports":[{"name":"http","port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"io.kompose.service":"qr-refletter"},"sessionAffinity":"None","type":"ClusterIP"}}
+    creationTimestamp: "2026-01-28T06:22:26Z"
+    labels:
+      io.kompose.service: qr-refletter
+    name: qr-refletter
+    namespace: default
+    resourceVersion: "15275343"
+    uid: ee3b0df7-0391-46c1-bafe-ff4a4179f11f
+  spec:
+    clusterIP: 10.110.87.141
+    clusterIPs:
+    - 10.110.87.141
+    internalTrafficPolicy: Local
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      io.kompose.service: qr-refletter
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"io.kompose.service":"recruitment-ui-gem"},"name":"recruitment-ui-gem","namespace":"default"},"spec":{"internalTrafficPolicy":"Local","ports":[{"name":"http","port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"io.kompose.service":"recruitment-ui-gem"},"sessionAffinity":"None","type":"ClusterIP"}}
+    creationTimestamp: "2026-01-28T06:22:16Z"
+    labels:
+      io.kompose.service: recruitment-ui-gem
+    name: recruitment-ui-gem
+    namespace: default
+    resourceVersion: "15391427"
+    uid: bd1e0701-4390-4027-bd61-3974480e3fdc
+  spec:
+    clusterIP: 10.99.177.231
+    clusterIPs:
+    - 10.99.177.231
+    externalTrafficPolicy: Cluster
+    internalTrafficPolicy: Local
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      nodePort: 30293
+      port: 80
+      protocol: TCP
+      targetPort: 3000
+    selector:
+      io.kompose.service: recruitment-ui-gem
+    sessionAffinity: None
+    type: NodePort
+  status:
+    loadBalancer: {}
+- apiVersion: v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"v1","kind":"Service","metadata":{"annotations":{},"labels":{"io.kompose.service":"hr-applicant-service"},"name":"hr-applicant-service","namespace":"default"},"spec":{"internalTrafficPolicy":"Local","ports":[{"name":"http","port":8080,"protocol":"TCP","targetPort":8080}],"selector":{"io.kompose.service":"hr-applicant-service"},"sessionAffinity":"None","type":"ClusterIP"}}
+    creationTimestamp: "2026-01-28T06:22:40Z"
+    labels:
+      io.kompose.service: hr-applicant-service
+    name: hr-applicant-service
+    namespace: default
+    resourceVersion: "19475051"
+    uid: af416cbe-c87c-4097-bcd0-02610f817962
+  spec:
+    clusterIP: 10.101.30.117
+    clusterIPs:
+    - 10.101.30.117
+    internalTrafficPolicy: Local
+    ipFamilies:
+    - IPv4
+    ipFamilyPolicy: SingleStack
+    ports:
+    - name: http
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+    selector:
+      io.kompose.service: hr-applicant-service
+    sessionAffinity: None
+    type: ClusterIP
+  status:
+    loadBalancer: {}
+kind: List
+metadata:
+  resourceVersion: ""
