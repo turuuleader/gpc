@@ -39,7 +39,7 @@ spec:
         image: foxchin/hr-applicant-service:latest
         imagePullPolicy: Always
         volumeMounts:
-        - mountPath: /app/Images
+        - mountPath: /app/gpcfiles
           name: files-volume
         livenessProbe:
           failureThreshold: 3
@@ -61,7 +61,7 @@ spec:
       volumes:
       - name: files-volume
         persistentVolumeClaim:
-          claimName: hr-applicant-pvc
+          claimName: hr-utility-pvc
 ---
 apiVersion: v1
 kind: Service
