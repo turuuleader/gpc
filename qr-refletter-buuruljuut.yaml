@@ -2,8 +2,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    io.kompose.service: foxchin/qr-refletter-buuruljuut
-  name: foxchin/qr-refletter-buuruljuut
+    io.kompose.service: qr-refletter-buuruljuut
+  name: qr-refletter-buuruljuut
   namespace: default
 spec:
   progressDeadlineSeconds: 600
@@ -11,7 +11,7 @@ spec:
   revisionHistoryLimit: 5
   selector:
     matchLabels:
-      io.kompose.service: foxchin/qr-refletter-buuruljuut
+      io.kompose.service: qr-refletter-buuruljuut
   strategy:
     rollingUpdate:
       maxSurge: 25%
@@ -20,7 +20,7 @@ spec:
   template:
     metadata:
       labels:
-        io.kompose.service: foxchin/qr-refletter-buuruljuut
+        io.kompose.service: qr-refletter-buuruljuut
     spec:
       containers:
       - env:
@@ -31,14 +31,14 @@ spec:
         - name: ServiceConfig__serviceDiscoveryAddress
           value: http://consul:8500
         - name: ServiceConfig__serviceAddress
-          value: http://foxchin/qr-refletter-buuruljuut:8080
+          value: http://qr-refletter-buuruljuut:8080
         - name: ServiceConfig__serviceName
-          value: foxchin/qr-refletter-buuruljuut
+          value: qr-refletter-buuruljuut
         - name: ServiceConfig__serviceId
           value: "1"
         - name: API_URL
-          value: https://gpc.tme.mn
-        image: foxchin/foxchin/qr-refletter-buuruljuut:20260303.1
+          value: https://ess.barloworld.mn
+        image: foxchin/qr-refletter-buuruljuut:20260303.1
         imagePullPolicy: Always
         livenessProbe:
           failureThreshold: 3
@@ -50,7 +50,7 @@ spec:
           periodSeconds: 5
           successThreshold: 1
           timeoutSeconds: 1
-        name: foxchin/qr-refletter-buuruljuut
+        name: qr-refletter-buuruljuut
         ports:
         - containerPort: 3000
           protocol: TCP
@@ -62,8 +62,8 @@ apiVersion: v1
 kind: Service
 metadata:
   labels:
-    io.kompose.service: foxchin/qr-refletter-buuruljuut
-  name: foxchin/qr-refletter-buuruljuut
+    io.kompose.service: qr-refletter-buuruljuut
+  name: qr-refletter-buuruljuut
   namespace: default
 spec:
   internalTrafficPolicy: Local
@@ -73,6 +73,6 @@ spec:
     protocol: TCP
     targetPort: 3000
   selector:
-    io.kompose.service: foxchin/qr-refletter-buuruljuut
+    io.kompose.service: qr-refletter-buuruljuut
   sessionAffinity: None
   type: ClusterIP
